@@ -8,7 +8,7 @@
 
 The [CocoaPods](http://cocoapods.org) podspec hasn't been submitted yet, but you can still use `CPAProxy.podspec` in the meantime. Just put this line in your `Podfile`:
 
-    pod 'CPAProxy', :git => 'https://github.com/ursachec/CPAProxy.git'
+    pod 'CPAProxy', :git => 'https://github.com/tula-byte/CPAProxy.git'
 
 The dependencies OpenSSL, libevent, and Tor should be built automatically via `build-all.sh` located in the scripts directory.
 
