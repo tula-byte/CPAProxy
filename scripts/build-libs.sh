@@ -10,10 +10,10 @@
 set -e
 
 if [  "${PLATFORM_TARGET}" == "" ]; then
-  echo "No platform target set, using iOS."
+  echo "TB: No platform target set, using iOS."
   export PLATFORM_TARGET="iOS"
 fi
-echo "Using platform target: $PLATFORM_TARGET."
+echo "TB: Using platform target: $PLATFORM_TARGET."
 
 SDK=$1
 if [ "${SDK}" == "" ]
@@ -25,34 +25,34 @@ then
     SDK_PREFIX="macosx10.15"
   fi
   AVAIL_SDKS=`xcodebuild -showsdks | grep "$SDK_PREFIX"`
-  FIRST_SDK=`echo "$AVAIL_SDKS" | head -n1`
+  FIRST_SDK=`echo "TB: $AVAIL_SDKS" | head -n1`
   if [ "$AVAIL_SDKS" == "$FIRST_SDK" ]; then
-    SDK=`echo "$FIRST_SDK" | cut -d\  -f2`
-    echo "No SDK specified. Using the only one available: $PLATFORM_TARGET $SDK"
+    SDK=`echo "TB: $FIRST_SDK" | cut -d\  -f2`
+    echo "TB: No SDK specified. Using the only one available: $PLATFORM_TARGET $SDK"
   else
-    echo "Please specify an $PLATFORM_TARGET SDK version number from the following possibilities:"
-    echo "$AVAIL_SDKS"
+    echo "TB: Please specify an $PLATFORM_TARGET SDK version number from the following possibilities:"
+    echo "TB: $AVAIL_SDKS"
     exit 1
   fi
 fi
 
 if [ -n "${ARCHS}" ]; then
-  echo "Building user-defined architectures: ${ARCHS}"
+  echo "TB: Building user-defined architectures: ${ARCHS}"
 else
   if [ "$PLATFORM_TARGET" == "iOS" ]; then
     ARCHS="x86_64-simulator x86_64-maccatalyst arm64"
   else
     ARCHS="x86_64"
   fi
-  echo "Building architectures: ${ARCHS}"
+  echo "TB: Building architectures: ${ARCHS}"
 fi
 
 
 if [ -n "${LIBRARIES}" ]; then
-  echo "Building user-defined libraries: ${LIBRARIES}"
+  echo "TB: Building user-defined libraries: ${LIBRARIES}"
 else
   LIBRARIES="openssl libevent lzma tor"
-  echo "Building libraries: ${LIBRARIES}"
+  echo "TB: Building libraries: ${LIBRARIES}"
 fi
 
 # Versions
@@ -84,7 +84,7 @@ mkdir -p "${FINAL_BUILT_DIR}"
 export LIBCPAPROXY_XCFRAMEWORK="${FINAL_BUILT_DIR}/libcpaproxy.xcframework"
 
 if [ -d "${LIBCPAPROXY_XCFRAMEWORK}" ]; then
-  echo "Final libcpaproxy.xcframework found, skipping build..."
+  echo "TB: Final libcpaproxy.xcframework found, skipping build..."
   exit 0
 fi
 
