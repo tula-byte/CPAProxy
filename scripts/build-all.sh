@@ -5,6 +5,6 @@ cd "`dirname \"$0\"`"
 TOPDIR=$(pwd)
 
 
-PLATFORM_TARGET="iOS" ARCHS="arm64" SDK="14.5" ./build-libs.sh
+PLATFORM_TARGET="iOS" ARCHS="arm64" ./build-libs.sh "14.5"
 ARCHS="arm64" ./build-xcframework.sh
 ./build-cpaproxy-xcframework.sh
