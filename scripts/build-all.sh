@@ -6,5 +6,5 @@ TOPDIR=$(pwd)
 
 
 PLATFORM_TARGET="iOS" ARCHS="arm64" ./build-libs.sh
-./build-xcframework.sh
-./build-cpaproxy-xcframework.sh
+ARCHS="arm64" ./build-xcframework.sh
+ARCHS="arm64" ./build-cpaproxy-xcframework.sh
