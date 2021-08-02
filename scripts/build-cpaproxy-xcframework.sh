@@ -65,6 +65,6 @@ archive "CPAProxy (iOS)" "generic/platform=iOS" "${IOS_ARCHIVE_DIR}"
 #archive "CPAProxy (iOS)" "generic/platform=macOS" "${IOS_CATALYST_ARCHIVE_DIR}"
 #archive "CPAProxy (macOS)" "generic/platform=macOS" "${MACOS_ARCHIVE_DIR}"
 
-createXCFramework CPAProxy
+#createXCFramework CPAProxy
 
 echo "Success! Finished building CPAProxy.xcframework."
