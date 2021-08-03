@@ -54,18 +54,18 @@ function createXCFramework {
   FRAMEWORK_CATALYST_DIR="${IOS_CATALYST_ARCHIVE_DIR}${FRAMEWORK_ARCHIVE_PATH_POSTFIX}"
   FRAMEWORK_MAC_DIR="${MACOS_ARCHIVE_DIR}${FRAMEWORK_ARCHIVE_PATH_POSTFIX}"
   xcodebuild -create-xcframework \
-            -framework "${FRAMEWORK_SIMULATOR_DIR}/${1}.framework" \
+            #-framework "${FRAMEWORK_SIMULATOR_DIR}/${1}.framework" \
             -framework "${FRAMEWORK_DEVICE_DIR}/${1}.framework" \
-            -framework "${FRAMEWORK_CATALYST_DIR}/${1}.framework" \
-            -framework "${FRAMEWORK_MAC_DIR}/${1}.framework" \
+            #-framework "${FRAMEWORK_CATALYST_DIR}/${1}.framework" \
+            #-framework "${FRAMEWORK_MAC_DIR}/${1}.framework" \
             -output "${CPAPROXY_XCFRAMEWORK}"
 }
 
 echo "TB: Archiving now"
 archive "CPAProxy (iOS)" "generic/platform=iOS" "${IOS_ARCHIVE_DIR}"
-archive "CPAProxy (iOS)" "generic/platform=iOS Simulator" "${IOS_SIMULATOR_ARCHIVE_DIR}"
-archive "CPAProxy (iOS)" "generic/platform=macOS" "${IOS_CATALYST_ARCHIVE_DIR}"
-archive "CPAProxy (macOS)" "generic/platform=macOS" "${MACOS_ARCHIVE_DIR}"
+#archive "CPAProxy (iOS)" "generic/platform=iOS Simulator" "${IOS_SIMULATOR_ARCHIVE_DIR}"
+#archive "CPAProxy (iOS)" "generic/platform=macOS" "${IOS_CATALYST_ARCHIVE_DIR}"
+#archive "CPAProxy (macOS)" "generic/platform=macOS" "${MACOS_ARCHIVE_DIR}"
 
 echo "TB: Building final framework"
 createXCFramework CPAProxy
