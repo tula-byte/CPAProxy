@@ -61,11 +61,13 @@ function createXCFramework {
             -output "${CPAPROXY_XCFRAMEWORK}"
 }
 
+echo "TB: Archiving now"
 archive "CPAProxy (iOS)" "generic/platform=iOS" "${IOS_ARCHIVE_DIR}"
 archive "CPAProxy (iOS)" "generic/platform=iOS Simulator" "${IOS_SIMULATOR_ARCHIVE_DIR}"
 archive "CPAProxy (iOS)" "generic/platform=macOS" "${IOS_CATALYST_ARCHIVE_DIR}"
 archive "CPAProxy (macOS)" "generic/platform=macOS" "${MACOS_ARCHIVE_DIR}"
 
+echo "TB: Building final framework"
 createXCFramework CPAProxy
 
 echo "Success! Finished building CPAProxy.xcframework."
