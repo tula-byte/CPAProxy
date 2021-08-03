@@ -46,4 +46,4 @@ done
 
 xcrun xcodebuild -create-xcframework ${XCFRAMEWORK_INPUTS} -output "${LIBCPAPROXY_XCFRAMEWORK}"
 
-echo "Success! Finished building xcframework."
+echo "TB: Success! Finished building xcframework."
